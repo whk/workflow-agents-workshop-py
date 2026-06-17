@@ -12,8 +12,8 @@ members = [
     "workshop-agent",
     "workshop-db",
     "workshop-naive-agent",
+    "workshop-queue-agents",
     "workshop-ui",
-    "workshop-worker-agents",
     "workshop-workflow-agents",
 ]
 
@@ -2025,26 +2025,9 @@ requires-dist = [
 ]
 
 [[package]]
-name = "workshop-ui"
+name = "workshop-queue-agents"
 version = "1.0.0"
-source = { editable = "shared/ui" }
-dependencies = [
-    { name = "fastapi" },
-    { name = "jinja2" },
-    { name = "workshop-db" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "fastapi", specifier = ">=0.115" },
-    { name = "jinja2", specifier = ">=3.1" },
-    { name = "workshop-db", editable = "shared/db" },
-]
-
-[[package]]
-name = "workshop-worker-agents"
-version = "1.0.0"
-source = { editable = "packages/worker_agents" }
+source = { editable = "packages/queue_agents" }
 dependencies = [
     { name = "fastapi" },
     { name = "redis", extra = ["hiredis"] },
@@ -2062,6 +2045,23 @@ requires-dist = [
     { name = "workshop-agent", editable = "shared/agent" },
     { name = "workshop-db", editable = "shared/db" },
     { name = "workshop-ui", editable = "shared/ui" },
+]
+
+[[package]]
+name = "workshop-ui"
+version = "1.0.0"
+source = { editable = "shared/ui" }
+dependencies = [
+    { name = "fastapi" },
+    { name = "jinja2" },
+    { name = "workshop-db" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.115" },
+    { name = "jinja2", specifier = ">=3.1" },
+    { name = "workshop-db", editable = "shared/db" },
 ]
 
 [[package]]
